@@ -4,15 +4,13 @@
 
 namespace TreeNS {
 
-// ==================== Конструкторы узла ====================
-
 template <typename T>
 BSTree<T>::Node::Node(const T& value) : data(value), left(nullptr), right(nullptr) {}
 
 template <typename T>
 BSTree<T>::Node::Node(T&& value) : data(std::move(value)), left(nullptr), right(nullptr) {}
 
-// ==================== Конструкторы и деструктор дерева ====================
+
 
 template <typename T>
 BSTree<T>::BSTree() : root(nullptr) {}
@@ -31,8 +29,6 @@ template <typename T>
 BSTree<T>::~BSTree() {
     deleteTree(root);
 }
-
-// ==================== Операторы присваивания ====================
 
 template <typename T>
 BSTree<T>& BSTree<T>::operator=(const BSTree& other) {
@@ -53,7 +49,7 @@ BSTree<T>& BSTree<T>::operator=(BSTree&& other) noexcept {
     return *this;
 }
 
-// ==================== Вспомогательные методы ====================
+
 
 template <typename T>
 typename BSTree<T>::Node* BSTree<T>::copyTree(Node* otherRoot) {
@@ -78,8 +74,6 @@ typename BSTree<T>::Node* BSTree<T>::findMin(Node* node) const {
     while (node && node->left) node = node->left;
     return node;
 }
-
-// ==================== Добавление узла ====================
 
 template <typename T>
 void BSTree<T>::insert(const T& value) {
@@ -111,7 +105,6 @@ typename BSTree<T>::Node* BSTree<T>::insertNode(Node* node, T&& value) {
     return node;
 }
 
-// ==================== Удаление узла ====================
 
 template <typename T>
 void BSTree<T>::remove(const T& value) {
@@ -144,7 +137,6 @@ typename BSTree<T>::Node* BSTree<T>::deleteNode(Node* node, const T& value) {
     return node;
 }
 
-// ==================== Удаление дерева ====================
 
 template <typename T>
 void BSTree<T>::clear() {
@@ -152,7 +144,6 @@ void BSTree<T>::clear() {
     root = nullptr;
 }
 
-// ==================== Поиск ====================
 
 template <typename T>
 bool BSTree<T>::search(const T& value) const {
@@ -166,8 +157,7 @@ bool BSTree<T>::findNode(Node* node, const T& value) const {
     if (value < node->data) return findNode(node->left, value);
     return findNode(node->right, value);
 }
-
-// ==================== Обходы ====================
+=
 
 template <typename T>
 void BSTree<T>::preOrderPrint(std::ostream& os) const {
@@ -211,7 +201,6 @@ void BSTree<T>::postOrder(Node* node, std::ostream& os) const {
     }
 }
 
-// ==================== Работа с файлами ====================
 
 template <typename T>
 void BSTree<T>::saveToFile(const std::string& filename) const {
@@ -258,14 +247,12 @@ typename BSTree<T>::Node* BSTree<T>::loadFromFile(std::ifstream& file) {
     return node;
 }
 
-// ==================== Проверка на пустоту (определение) ====================
 
 template <typename T>
 bool BSTree<T>::isEmpty() const {
     return root == nullptr;
 }
 
-// ==================== Явная инстанциация ====================
 template class BSTree<int>;
 template class BSTree<double>;
 template class BSTree<std::string>;
