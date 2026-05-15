@@ -4,8 +4,6 @@
 using namespace TreeNS;
 
 int main() {
-    std::cout << "=== BSTree Demo ===" << std::endl;
-    std::cout << std::endl;
 
     BSTree<int> tree;
 
@@ -59,7 +57,6 @@ int main() {
     std::cout << "    tree3 empty: " << tree3.isEmpty() << std::endl;
 
     std::cout << std::endl;
-    std::cout << "=== Demo finished ===" << std::endl;
 
     return 0;
 }
