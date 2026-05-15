@@ -20,7 +20,6 @@ private:
 
     Node* root;
 
-    // Вспомогательные приватные методы
     Node* copyTree(Node* otherRoot);
     void deleteTree(Node* node);
     Node* insertNode(Node* node, const T& value);
@@ -35,36 +34,33 @@ private:
     Node* loadFromFile(std::ifstream& file);
 
 public:
-    // Конструкторы и деструктор
+    // ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г» ГЁ Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
     BSTree();
     BSTree(const BSTree& other);
     BSTree(BSTree&& other) noexcept;
     ~BSTree();
 
-    // Операторы присваивания
+
     BSTree& operator=(const BSTree& other);
     BSTree& operator=(BSTree&& other) noexcept;
 
-    // Основные операции
     void insert(const T& value);
     void insert(T&& value);
     void remove(const T& value);
     void clear();
     bool search(const T& value) const;
 
-    // Обходы
+
     void preOrderPrint(std::ostream& os = std::cout) const;
     void inOrderPrint(std::ostream& os = std::cout) const;
     void postOrderPrint(std::ostream& os = std::cout) const;
 
-    // Работа с файлами
     void saveToFile(const std::string& filename) const;
     void loadFromFile(const std::string& filename);
 
-    // Проверка
-    bool isEmpty() const;  // Только объявление!
+    bool isEmpty() const;
 
-    // Перегрузка оператора вывода
+
     friend std::ostream& operator<<(std::ostream& os, const BSTree& tree) {
         tree.inOrderPrint(os);
         return os;
